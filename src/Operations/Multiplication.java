@@ -6,7 +6,7 @@ public class Multiplication extends MainOperation {
     }
 
     @Override
-    public int Calculate(int a, int b) {
+    public int calculate(int a, int b) {
         return a * b;
     }
 }

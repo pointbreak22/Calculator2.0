@@ -11,7 +11,7 @@ public class Program {
         System.out.println("Введите строку формата \"x + y\" c пробелами между числами");
         ScanString scan = new ScanString(in.nextLine());
         try {
-            scan.Method();
+            scan.runCalculation();
         } catch (Exception ex) {
             System.out.println(ex.toString());
 

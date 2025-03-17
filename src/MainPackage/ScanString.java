@@ -13,17 +13,17 @@ public class ScanString {
     public ScanString(String str) //конструктор инициализации класса
     {
         text = str;
-        InitHashUnits();
+        initHashUnits();
         initHashTens();
     }
 
-    public void Method() throws Exception //проверяет наличие ошибок в строке
+    public void runCalculation() throws Exception //проверяет наличие ошибок в строке
     {
         String[] words = text.split(" ");
         if (words.length == 3) {
             if (words[1].equals("+") || words[1].equals("-") || words[1].equals("*") || words[1].equals("/")) {
                 if ((hashUnits.containsKey(words[0]) && hashUnits.containsKey(words[2])) || (hashUnits.containsValue(words[0]) && hashUnits.containsValue(words[2]))) {
-                    Operate(words);
+                    runOperate(words);
                 } else throw new Exception("Должны быть числа от 1 до 10 обычного или римского формата одного вида");
             } else throw new Exception("Знака действия не существует");
 
@@ -31,20 +31,20 @@ public class ScanString {
     }
 
     //вычисление
-    private void Operate(String[] words) {
+    private void runOperate(String[] words) {
         if (hashUnits.containsKey(words[0]) && hashUnits.containsKey(words[2])) {
             for (MainOperation op : operation) {
                 if (words[1].equals(op.getSign()))
-                    System.out.println(op.Calculate(Integer.parseInt(words[0]), Integer.parseInt(words[2])));
+                    System.out.println(op.calculate(Integer.parseInt(words[0]), Integer.parseInt(words[2])));
             }
         } else if (hashUnits.containsValue(words[0]) && hashUnits.containsValue(words[2])) {
-            int a = SearchKey(words[0]);
-            int b = SearchKey(words[2]);
+            int a = searchKey(words[0]);
+            int b = searchKey(words[2]);
             int result = 0;
             String string;
             for (MainOperation op : operation) {
                 if (words[1].equals(op.getSign()))
-                    result = op.Calculate(a, b);
+                    result = op.calculate(a, b);
             }
             if (result >= 10) {
                 if (result % 10 == 0)
@@ -55,7 +55,7 @@ public class ScanString {
         }
     }
 
-    private int SearchKey(String str) //находит ключ с римского словаря
+    private int searchKey(String str) //находит ключ с римского словаря
     {
         int k = 0;
         for (String key : hashUnits.keySet())
@@ -64,7 +64,7 @@ public class ScanString {
         return k;
     }
 
-    private void InitHashUnits() {
+    private void initHashUnits() {
         hashUnits.put("1", "I");
         hashUnits.put("2", "II");
         hashUnits.put("3", "III");
