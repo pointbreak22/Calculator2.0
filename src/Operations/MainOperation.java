@@ -7,6 +7,6 @@ public abstract class MainOperation {
         return sign;
     }
 
-    public abstract int Сalculate(int a, int b);
+    public abstract int Calculate(int a, int b);
 
 }

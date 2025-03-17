@@ -3,15 +3,15 @@ package MainPackage;//import static java.lang.System.*;
 import java.util.Scanner;
 //import  java.lang.Exception;
 
-public class Programm {
+public class Program {
 
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите строку формата \"x + y\" c пробелами между числами");
-        SkanString skan = new SkanString(in.nextLine());
+        ScanString scan = new ScanString(in.nextLine());
         try {
-            skan.Method();
+            scan.Method();
         } catch (Exception ex) {
             System.out.println(ex.toString());
 
